@@ -41,6 +41,15 @@ app.get("/getHistory", (req, res) => {
   });
 });
 
+// Getting biggest number in history
+app.get("/getLatestHistory", (req, res) => {
+  const sqlSelect = "SELECT MAX(number) AS largest_number FROM history;";
+  db.query(sqlSelect, (err, result) => {
+    res.send(result);
+  });
+});
+
+// Sending chat and receiving answer
 app.post("/sendChat", (req, res) => {
   const number = req.body.number;
   const who = req.body.who;
