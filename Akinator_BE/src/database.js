@@ -96,17 +96,7 @@ function updateRecord(ID, question, answer) {
 }
 
 // Function to add a question to the database
-function addQuestion(input) {
-  // Parse the user input
-  const regex = /^Tambahkan pertanyaan (.+) dengan jawaban (.+)$/i;
-  const match = input.match(regex);
-  if (!match) {
-    console.log("Format input tIDak valID");
-    return;
-  }
-  const question = match[1];
-  const answer = match[2];
-
+function addQuestion(question, answer) {
   // Check if the question already exists in the database
   const sqlSelect = `SELECT * FROM question_answer`;
   connection.query(sqlSelect, (error, results) => {
@@ -137,16 +127,7 @@ function addQuestion(input) {
 }
 
 // Function to delete a question from the database
-function deleteQuestion(input) {
-  // Parse the user input
-  const regex = /^Hapus pertanyaan (.+)$/i;
-  const match = input.match(regex);
-  if (!match) {
-    console.log("Format input tIDak valID");
-    return;
-  }
-  const question = match[1];
-
+function deleteQuestion(question) {
   // Check if the question exists in the database
   const sqlSelect = `SELECT * FROM question_answer`;
   connection.query(sqlSelect, (error, results) => {
