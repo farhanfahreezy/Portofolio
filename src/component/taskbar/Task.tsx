@@ -29,7 +29,7 @@ const Task = ({ taskName, path }: TaskProps) => {
           transform: "scale(1.1) translateY(-10px)",
           // bg: "rgba(255,255,255,0.07)",
         }}
-        _active={{ transform: "scale(1)", bg: "rgba(255,255,255,0.07)" }}
+        _active={{ transform: "scale(1)" }}
         onMouseEnter={() => {
           setIsHovered(true);
         }}
