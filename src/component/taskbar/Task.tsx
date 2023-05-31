@@ -4,9 +4,10 @@ import { useState } from "react";
 interface TaskProps {
   taskName: string;
   path: string;
+  action: () => void;
 }
 
-const Task = ({ taskName, path }: TaskProps) => {
+const Task = ({ taskName, path, action }: TaskProps) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <Stack direction="column" key={taskName}>
@@ -24,7 +25,7 @@ const Task = ({ taskName, path }: TaskProps) => {
       <Button
         boxSize="80px"
         variant="ghost"
-        borderRadius="25px"
+        // borderRadius="25px"
         _hover={{
           transform: "scale(1.1) translateY(-10px)",
           // bg: "rgba(255,255,255,0.07)",
@@ -37,6 +38,7 @@ const Task = ({ taskName, path }: TaskProps) => {
           setIsHovered(false);
         }}
         p={0}
+        onClick={action}
       >
         <Image src={path} boxSize="65px" />
       </Button>
