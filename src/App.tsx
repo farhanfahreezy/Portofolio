@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Particles from "react-particles";
 import { loadFull } from "tsparticles";
 import type { Container, Engine } from "tsparticles-engine";
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, Show, useBreakpointValue } from "@chakra-ui/react";
 import Navbar from "./component/navbar/Navbar";
 import Taskbar from "./component/taskbar/Taskbar";
 import Home from "./pages/Home";
@@ -14,6 +14,7 @@ import Resume from "./pages/Resume";
 const App = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [showTaskbar, setShowTaskbar] = useState(false);
+  const currentBreakpoint = useBreakpointValue({ base: "base", md: "md" });
 
   const particlesInit = useCallback(async (engine: Engine) => {
     console.log(engine);
@@ -135,12 +136,16 @@ const App = () => {
             <Route path="resume" element={<Resume />}></Route>
           </Routes>
           <Navbar time={currentTime} />
-          <Taskbar showTaskbar={showTaskbar} hideTaskbar={hideTaskbar} />
+          <Show above="md">
+            <Taskbar showTaskbar={showTaskbar} hideTaskbar={hideTaskbar} />
+          </Show>
+
           <Box
             h="97.6px"
             position="fixed"
             bottom="0%"
             w="100vw"
+            zIndex={2}
             onMouseEnter={() => {
               setShowTaskbar(true);
             }}

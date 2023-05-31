@@ -17,6 +17,7 @@ const Taskbar = ({ showTaskbar, hideTaskbar }: TaskbarProps) => {
       action: () => {
         console.log("Home");
       },
+      route: "/",
     },
     {
       key: 1,
@@ -25,6 +26,7 @@ const Taskbar = ({ showTaskbar, hideTaskbar }: TaskbarProps) => {
       action: () => {
         console.log("About");
       },
+      route: "about",
     },
     {
       key: 2,
@@ -33,6 +35,7 @@ const Taskbar = ({ showTaskbar, hideTaskbar }: TaskbarProps) => {
       action: () => {
         console.log("Project");
       },
+      route: "project",
     },
     {
       key: 3,
@@ -41,6 +44,7 @@ const Taskbar = ({ showTaskbar, hideTaskbar }: TaskbarProps) => {
       action: () => {
         console.log("Resume");
       },
+      route: "resume",
     },
   ];
 
@@ -50,8 +54,9 @@ const Taskbar = ({ showTaskbar, hideTaskbar }: TaskbarProps) => {
       taskName: "15Puzzle",
       iconPath: "/icons/15puzzle.svg",
       action: () => {
-        console.log("15Puzzle");
+        window.open("https://play15puzzle.vercel.app/", "_blank");
       },
+      route: "/",
     },
   ];
 
@@ -70,7 +75,7 @@ const Taskbar = ({ showTaskbar, hideTaskbar }: TaskbarProps) => {
       borderWidth="1px"
       borderRadius="20px"
       h="97.6px"
-      zIndex={2}
+      zIndex={3}
       visibility={showTaskbar ? "visible" : "hidden"}
       transition="visibility 0.1s, bottom 0.1s ease-in-out"
       onMouseLeave={hideTaskbar}
@@ -81,6 +86,7 @@ const Taskbar = ({ showTaskbar, hideTaskbar }: TaskbarProps) => {
           taskName={task.taskName}
           key={task.key}
           action={task.action}
+          route={task.route}
         />
       ))}
       <Divider orientation="vertical" height="60px" borderColor="white" />
@@ -90,6 +96,7 @@ const Taskbar = ({ showTaskbar, hideTaskbar }: TaskbarProps) => {
           taskName={task.taskName}
           key={task.key}
           action={task.action}
+          route={task.route}
         />
       ))}
     </Stack>

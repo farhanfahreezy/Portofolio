@@ -3,7 +3,7 @@ import { Center, Text } from "@chakra-ui/react";
 
 const Project = () => {
   return (
-    <Center position="absolute" top="50%">
+    <Center h="100vh" w="100vw" zIndex={1}>
       <Text>Project</Text>
     </Center>
   );
