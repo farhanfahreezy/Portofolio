@@ -6,6 +6,7 @@ import wallpaper from "./assets/bg.jpg";
 
 const App = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [selectedPage, setSelectedPage] = useState("Home");
 
   useEffect(() => {
     const interval = setInterval(() => {

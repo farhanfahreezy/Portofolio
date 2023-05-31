@@ -1,28 +1,27 @@
-import { Button, Stack, Text } from "@chakra-ui/react";
+import { Button, Image, Stack, Text } from "@chakra-ui/react";
 import { useState } from "react";
-import { AiFillHome } from "react-icons/ai";
 
 interface TaskProps {
   taskName: string;
-  key: number;
+  path: string;
 }
 
-const Task = ({ taskName, key }: TaskProps) => {
+const Task = ({ taskName, path }: TaskProps) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
-    <Stack direction="column">
+    <Stack direction="column" key={taskName}>
       {isHovered && (
         <Text
           position="absolute"
-          top="-30%"
+          top="-40%"
           left="50%"
           transform="translateX(-50%)"
+          fontSize="18px"
         >
           {taskName}
         </Text>
       )}
       <Button
-        key={key}
         boxSize="80px"
         variant="ghost"
         borderRadius="25px"
@@ -37,8 +36,9 @@ const Task = ({ taskName, key }: TaskProps) => {
         onMouseLeave={() => {
           setIsHovered(false);
         }}
+        p={0}
       >
-        <AiFillHome size="80px" />
+        <Image src={path} boxSize="65px" />
       </Button>
     </Stack>
   );

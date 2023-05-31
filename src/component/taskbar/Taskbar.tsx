@@ -3,14 +3,17 @@
 import { Divider, Stack } from "@chakra-ui/react";
 import Task from "./Task";
 
-// interface TaskBarProps{
-//   numOfTask : number
-//   numOfAdditionalTask : number
-// }
-
 const Taskbar = () => {
-  const num1 = Array.from([1, 2, 3, 4]);
-  const num2 = Array.from([5, 6]);
+  const taskMain = [
+    { key: 0, taskName: "Home", iconPath: "/icons/home.png" },
+    { key: 1, taskName: "About", iconPath: "/icons/about.png" },
+    { key: 2, taskName: "Project", iconPath: "/icons/project.png" },
+    { key: 3, taskName: "Resume", iconPath: "/icons/resume.png" },
+  ];
+
+  const taskAdditional = [
+    { key: 100, taskName: "15Puzzle", iconPath: "/icons/15puzzle.svg" },
+  ];
 
   return (
     <Stack
@@ -25,16 +28,15 @@ const Taskbar = () => {
       p={2}
       borderColor="rgba(255,255,255,0.4)"
       borderWidth="1px"
-      borderRadius="30px"
-      spacing="10px"
+      borderRadius="20px"
       h="97.6px"
     >
-      {num1.map((num) => (
-        <Task key={num} taskName="Home" />
+      {taskMain.map((task) => (
+        <Task path={task.iconPath} taskName={task.taskName} key={task.key} />
       ))}
       <Divider orientation="vertical" height="60px" borderColor="white" />
-      {num2.map((num) => (
-        <Task key={num} taskName="Additional" />
+      {taskAdditional.map((task) => (
+        <Task path={task.iconPath} taskName={task.taskName} key={task.key} />
       ))}
     </Stack>
   );
