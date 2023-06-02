@@ -14,15 +14,17 @@ import Resume from "./pages/Resume";
 const App = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [showTaskbar, setShowTaskbar] = useState(true);
+  const [autoHideTaskbar, setAutoHideTaskbar] = useState(true);
 
   const particlesInit = useCallback(async (engine: Engine) => {
     console.log(engine);
 
-    // you can initialize the tsParticles instance (engine) here, adding custom shapes or presets
-    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-    // starting from v2 you can add only the features you need reducing the bundle size
     await loadFull(engine);
   }, []);
+
+  const setAutoHide = () => {
+    setAutoHideTaskbar(!autoHideTaskbar);
+  };
 
   const particlesLoaded = useCallback(
     async (container: Container | undefined) => {
@@ -154,9 +156,17 @@ const App = () => {
             <Route path="project" element={<Project />}></Route>
             <Route path="resume" element={<Resume />}></Route>
           </Routes>
-          <Navbar time={currentTime} />
+          <Navbar
+            time={currentTime}
+            autoHide={autoHideTaskbar}
+            setAuto={setAutoHide}
+          />
           <Show above="md">
-            <Taskbar showTaskbar={showTaskbar} hideTaskbar={hideTaskbar} />
+            <Taskbar
+              showTaskbar={showTaskbar}
+              hideTaskbar={hideTaskbar}
+              autoHide={autoHideTaskbar}
+            />
           </Show>
 
           <Box

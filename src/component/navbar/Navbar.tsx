@@ -1,13 +1,23 @@
 import { useState } from "react";
 import { Button, Spacer, Stack, HStack, Text, Show } from "@chakra-ui/react";
 import Settings from "./Settings";
+import SocialSetting from "./SocialSetting";
 
 interface NavbarProps {
   time: Date;
+  autoHide: boolean;
+  setAuto: () => void;
 }
 
-const Navbar = ({ time }: NavbarProps) => {
+const Navbar = ({ time, autoHide, setAuto }: NavbarProps) => {
   const [showSettings, setShowSettings] = useState(false);
+  const [showSocial, setShowSocial] = useState(false);
+  const showHideSettings = () => {
+    setShowSettings((val) => !val);
+  };
+  const showHideSocial = () => {
+    setShowSocial((val) => !val);
+  };
   return (
     <>
       <HStack
@@ -20,7 +30,13 @@ const Navbar = ({ time }: NavbarProps) => {
         zIndex={3}
       >
         <Show above="md">
-          <Button variant="ghost" fontWeight="normal" w="150px" h="30px">
+          <Button
+            variant="ghost"
+            fontWeight="normal"
+            w="150px"
+            h="30px"
+            onClick={showHideSocial}
+          >
             farhanfahreezy
           </Button>
         </Show>
@@ -47,18 +63,19 @@ const Navbar = ({ time }: NavbarProps) => {
             fontWeight="normal"
             w="150px"
             h="30px"
-            onClick={() => {
-              setShowSettings((val) => !val);
-            }}
-            // onMouseLeave={() => {
-            //   setShowSettings(false);
-            // }}
+            onClick={showHideSettings}
           >
             Settings
           </Button>
         </Show>
       </HStack>
-      <Settings showSettings={showSettings} />
+      <Settings
+        showSettings={showSettings}
+        setAuto={setAuto}
+        autoHide={autoHide}
+        showHideSettings={showHideSettings}
+      />
+      <SocialSetting showSocial={showSocial} showHideSocial={showHideSocial} />
     </>
   );
 };

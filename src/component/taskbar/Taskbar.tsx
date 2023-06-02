@@ -6,9 +6,10 @@ import Task from "./Task";
 interface TaskbarProps {
   showTaskbar: boolean;
   hideTaskbar: () => void;
+  autoHide: boolean;
 }
 
-const Taskbar = ({ showTaskbar, hideTaskbar }: TaskbarProps) => {
+const Taskbar = ({ showTaskbar, hideTaskbar, autoHide }: TaskbarProps) => {
   const taskMain = [
     {
       key: 0,
@@ -66,7 +67,7 @@ const Taskbar = ({ showTaskbar, hideTaskbar }: TaskbarProps) => {
       position="fixed"
       left="50%"
       transform="translateX(-50%)"
-      bottom={showTaskbar ? "1%" : "0%"}
+      bottom={!autoHide ? "1%" : showTaskbar ? "1%" : "0%"}
       align="center"
       justify="center"
       bg="rgba(0,0,0,0.4)"
@@ -76,7 +77,7 @@ const Taskbar = ({ showTaskbar, hideTaskbar }: TaskbarProps) => {
       borderRadius="20px"
       h="97.6px"
       zIndex={3}
-      visibility={showTaskbar ? "visible" : "hidden"}
+      visibility={!autoHide ? "visible" : showTaskbar ? "visible" : "hidden"}
       transition="visibility 0.1s, bottom 0.1s ease-in-out"
       onMouseLeave={hideTaskbar}
     >
