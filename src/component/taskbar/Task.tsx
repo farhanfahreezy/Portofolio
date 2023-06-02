@@ -1,4 +1,10 @@
-import { Button, Image, Stack, Text } from "@chakra-ui/react";
+import {
+  Button,
+  Image,
+  Stack,
+  Text,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -11,6 +17,7 @@ interface TaskProps {
 
 const Task = ({ taskName, path, action, route }: TaskProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const currentBreakpoint = useBreakpointValue({ md: "md" });
   return (
     <Stack direction="column" key={taskName}>
       {isHovered && (
@@ -26,7 +33,7 @@ const Task = ({ taskName, path, action, route }: TaskProps) => {
       )}
       <Link to={route}>
         <Button
-          boxSize="80px"
+          boxSize={currentBreakpoint === "md" ? "80px" : "60px"}
           variant="ghost"
           // borderRadius="25px"
           _hover={{
@@ -43,7 +50,10 @@ const Task = ({ taskName, path, action, route }: TaskProps) => {
           p={0}
           onClick={action}
         >
-          <Image src={path} boxSize="65px" />
+          <Image
+            src={path}
+            boxSize={currentBreakpoint === "md" ? "65px" : "48.75px"}
+          />
         </Button>
       </Link>
     </Stack>

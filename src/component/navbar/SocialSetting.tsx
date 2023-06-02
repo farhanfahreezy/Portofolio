@@ -14,7 +14,7 @@ const SocialSetting = ({ showSocial, showHideSocial }: SocialSettingProps) => {
       zIndex={2}
       px={7}
       py={5}
-      top={showSocial ? "45px" : 0}
+      top={showSocial ? "55px" : 0}
       left="5px"
       opacity={showSocial ? 1 : 0}
       visibility={showSocial ? "visible" : "hidden"}

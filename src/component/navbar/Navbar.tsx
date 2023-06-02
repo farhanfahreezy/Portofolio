@@ -55,8 +55,8 @@ const Navbar = ({ time, autoHide, setAuto }: NavbarProps) => {
             })}
           </Text>
         </Stack>
-
         <Spacer />
+
         <Show above="md">
           <Button
             variant="ghost"
