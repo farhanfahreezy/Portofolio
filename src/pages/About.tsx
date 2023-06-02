@@ -6,8 +6,6 @@ import {
   Text,
   Button,
   useBreakpointValue,
-  Show,
-  Box,
 } from "@chakra-ui/react";
 import PicSlideshow from "../component/PicSlideshow";
 import { AiFillFire } from "react-icons/ai";
