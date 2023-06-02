@@ -63,7 +63,7 @@ const Taskbar = ({ showTaskbar, hideTaskbar }: TaskbarProps) => {
   return (
     <Stack
       direction="row"
-      position="absolute"
+      position="fixed"
       left="50%"
       transform="translateX(-50%)"
       bottom={showTaskbar ? "1%" : "0%"}

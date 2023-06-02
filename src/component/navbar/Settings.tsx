@@ -8,7 +8,7 @@ const Settings = ({ showSettings }: SettingsProps) => {
   return (
     <Box
       bg="#575757"
-      position="absolute"
+      position="fixed"
       zIndex={2}
       px={7}
       py={5}
