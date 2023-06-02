@@ -163,7 +163,9 @@ const App = () => {
             h="97.6px"
             position="fixed"
             bottom="0%"
-            w="100vw"
+            left="50%"
+            transform="translateX(-50%)"
+            w="450px"
             zIndex={2}
             onMouseEnter={() => {
               setShowTaskbar(true);
