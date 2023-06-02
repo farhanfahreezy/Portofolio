@@ -65,7 +65,7 @@ const About = () => {
             </ListItem>
             <ListItem>
               <ListIcon as={AiFillFire} color="red.500" />
-              Sleep 😴
+              Working Out 💪
             </ListItem>
           </List>
         </Stack>
