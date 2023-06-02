@@ -1,15 +1,15 @@
-// import { useState } from "react";
-
-import { Divider, Stack } from "@chakra-ui/react";
+import { Divider, Stack, useBreakpointValue } from "@chakra-ui/react";
 import Task from "./Task";
 
 interface TaskbarProps {
   showTaskbar: boolean;
-  hideTaskbar: () => void;
+  hideTaskbar?: () => void;
   autoHide: boolean;
 }
 
 const Taskbar = ({ showTaskbar, hideTaskbar, autoHide }: TaskbarProps) => {
+  const currentBreakpoint = useBreakpointValue({ md: "md" });
+
   const taskMain = [
     {
       key: 0,
@@ -67,7 +67,13 @@ const Taskbar = ({ showTaskbar, hideTaskbar, autoHide }: TaskbarProps) => {
       position="fixed"
       left="50%"
       transform="translateX(-50%)"
-      bottom={!autoHide ? "1%" : showTaskbar ? "1%" : "0%"}
+      bottom={
+        !autoHide || currentBreakpoint !== "md"
+          ? "1%"
+          : showTaskbar
+          ? "1%"
+          : "0%"
+      }
       align="center"
       justify="center"
       bg="rgba(0,0,0,0.4)"
@@ -75,9 +81,14 @@ const Taskbar = ({ showTaskbar, hideTaskbar, autoHide }: TaskbarProps) => {
       borderColor="rgba(255,255,255,0.4)"
       borderWidth="1px"
       borderRadius="20px"
-      h="97.6px"
       zIndex={3}
-      visibility={!autoHide ? "visible" : showTaskbar ? "visible" : "hidden"}
+      visibility={
+        !autoHide || currentBreakpoint !== "md"
+          ? "visible"
+          : showTaskbar
+          ? "visible"
+          : "hidden"
+      }
       transition="visibility 0.1s, bottom 0.1s ease-in-out"
       onMouseLeave={hideTaskbar}
     >

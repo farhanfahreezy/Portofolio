@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Particles from "react-particles";
 import { loadFull } from "tsparticles";
 import type { Container, Engine } from "tsparticles-engine";
-import { Box, Flex, Show } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import Navbar from "./component/navbar/Navbar";
 import Taskbar from "./component/taskbar/Taskbar";
 import Home from "./pages/Home";
@@ -161,13 +161,12 @@ const App = () => {
             autoHide={autoHideTaskbar}
             setAuto={setAutoHide}
           />
-          <Show above="md">
-            <Taskbar
-              showTaskbar={showTaskbar}
-              hideTaskbar={hideTaskbar}
-              autoHide={autoHideTaskbar}
-            />
-          </Show>
+
+          <Taskbar
+            showTaskbar={showTaskbar}
+            hideTaskbar={hideTaskbar}
+            autoHide={autoHideTaskbar}
+          />
 
           <Box
             h="97.6px"
