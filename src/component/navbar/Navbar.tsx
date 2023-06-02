@@ -15,7 +15,7 @@ const Navbar = ({ time }: NavbarProps) => {
         bg="#131313"
         py={1}
         px={2}
-        position="absolute"
+        position="fixed"
         top="0%"
         zIndex={3}
       >

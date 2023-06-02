@@ -37,7 +37,7 @@ const Home = () => {
         Undergraduate <span color="#123123">Informatics Engineering</span>{" "}
         Student at Institute of Technology Bandung
       </Text>
-      <Text fontSize={20} mt={10}>
+      <Text fontSize={20} mt={10} mb={2}>
         Find me on
       </Text>
       <Box bg="#131313" px={8} py={6} borderRadius={10} justifySelf="center">

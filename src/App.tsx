@@ -13,7 +13,7 @@ import Resume from "./pages/Resume";
 
 const App = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [showTaskbar, setShowTaskbar] = useState(false);
+  const [showTaskbar, setShowTaskbar] = useState(true);
 
   const particlesInit = useCallback(async (engine: Engine) => {
     console.log(engine);
@@ -126,8 +126,28 @@ const App = () => {
         // bgSize="cover"
         w="100vw"
         h="100vh"
+        overflowY="scroll"
+        overflowX="hidden"
+        sx={{
+          "&::-webkit-scrollbar": {
+            width: "6px",
+            // transition: "opacity 0.2s ease-in-out",
+          },
+          "&::-webkit-scrollbar:hover": {
+            width: "6px",
+          },
+          "&::-webkit-scrollbar-track": {
+            background: "transparent",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            background: "gray.500",
+            borderRadius: "md",
+          },
+          position: "relative",
+          zIndex: "2",
+        }}
       >
-        <Flex align="center">
+        <Flex align="center" w="100vw" h="100vh">
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="about" element={<About />}></Route>
